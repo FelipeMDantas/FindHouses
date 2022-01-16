@@ -1,7 +1,7 @@
 export const colors = {
     primary: '#594AFF',
     backgroundLight: '#2C285B',
-    backGroundDark: '#1E1D42',
+    backgroundDark: '#1E1D42',
     grey: '#E5E5E5',
     white: '#FFFFFF',
     purpleTransparent: 'rgba(45, 40, 91, 0.64)',

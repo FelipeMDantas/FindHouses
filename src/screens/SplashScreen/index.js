@@ -1,23 +1,14 @@
 import React from 'react';
-import { StyleSheet, Text } from 'react-native';
-import { SectionView } from './styles';
+import { SectionView, SectionText, SectionImage } from './styles';
+import SplashLogo from '../../assets/img/SevenHousesLogo.png'
 
 export const SplashScreen = () => {
 
   return (
       <SectionView>
-        <Text style={styles.sectionText}>Hey planet!</Text>
+        <SectionImage source={SplashLogo} />
+        <SectionText>Hey planet!</SectionText>
+        <SectionText>Example</SectionText>
       </SectionView>
   );
 };
-
-const styles = StyleSheet.create({
-  sectionView: {
-    height: 100,
-    width: '100%',
-    backgroundColor: 'red',
-  },
-  sectionText: {
-    color: 'white',
-  },
-});

@@ -14,9 +14,3 @@ export const SectionImage = styled.Image`
     height: 150px;
     width: 150px;
 `;
-
-export const SectionText = styled.Text`
-    color: white;
-    font-size: 16px;
-    font-weight: bold;
-`;

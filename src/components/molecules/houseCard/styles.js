@@ -25,3 +25,17 @@ export const TextContainer = styled.View`
     justify-content: space-between;
     padding: ${({ theme }) => theme.metrics.px(12)}px;
 `;
+
+export const TextContainerLeft = styled.View`
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+`;
+
+export const TextContainerRight = styled.View`
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: center;
+`;

@@ -15,7 +15,7 @@ export const CardContainer = styled.TouchableOpacity`
 
 export const CardImage = styled.Image`
     width: 100%;
-    height: ${({ theme }) => theme.metrics.px(180)}px;
+    height: 70%;
 `;
 
 export const TextContainer = styled.View`
@@ -24,6 +24,7 @@ export const TextContainer = styled.View`
     align-items: flex-start;
     justify-content: space-between;
     padding: ${({ theme }) => theme.metrics.px(12)}px;
+    height: 30%;
 `;
 
 export const TextContainerLeft = styled.View`
@@ -31,6 +32,8 @@ export const TextContainerLeft = styled.View`
     flex-direction: column;
     align-items: flex-start;
     justify-content: center;
+    width: 70%;
+    height: 100%;
 `;
 
 export const TextContainerRight = styled.View`
@@ -38,4 +41,6 @@ export const TextContainerRight = styled.View`
     flex-direction: column;
     align-items: flex-end;
     justify-content: center;
+    width: 30%;
+    height: 100%;
 `;

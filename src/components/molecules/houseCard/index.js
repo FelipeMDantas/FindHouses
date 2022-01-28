@@ -1,6 +1,6 @@
 import React from "react";
 import { CardTitle, CardHightLightText, CardDescription } from '../../atoms';
-import { CardContainer, CardImage, TextContainer, TextContainerLeft } from './styles';
+import { CardContainer, CardImage, TextContainer, TextContainerLeft, TextContainerRight } from './styles';
 
 export const HouseCard = ({ imgSource }) => {
     return (
@@ -14,7 +14,7 @@ export const HouseCard = ({ imgSource }) => {
                     </CardDescription>
                 </TextContainerLeft>
                 <TextContainerRight>
-                    U$ 200,00
+                    <CardHightLightText>U$ 200,00</CardHightLightText>
                 </TextContainerRight>
             </TextContainer>
         </CardContainer>

@@ -33,7 +33,7 @@ export const DetailSubTitle = styled.Text`
 export const DetailText = styled.Text`
     font-size: ${({ theme }) => theme.metrics.px(14)}px;
     color: white;
-    Montserrat-Regular
+    font-family: Montserrat-Regular;
 `;
 
 export const DetailSectionTitle = styled.Text`
@@ -51,7 +51,7 @@ export const CardTitle = styled.Text`
 export const CardDescription = styled.Text`
     font-size: ${({ theme }) => theme.metrics.px(10)}px;
     color: white;
-    Montserrat-Regular
+    font-family: 'Montserrat-Regular';
 `;
 
 export const CardHightLightText = styled.Text`

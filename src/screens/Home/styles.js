@@ -1,5 +1,7 @@
 import styled from 'styled-components/native';
 
+export const ScreenScroll = styled.ScrollView``;
+
 export const ScreenContainer = styled.View`
     display: flex;
     flex-direction: column;

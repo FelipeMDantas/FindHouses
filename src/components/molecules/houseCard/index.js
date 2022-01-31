@@ -2,19 +2,24 @@ import React from "react";
 import { CardTitle, CardHightLightText, CardDescription } from '../../atoms';
 import { CardContainer, CardImage, TextContainer, TextContainerLeft, TextContainerRight } from './styles';
 
-export const HouseCard = ({ imgSource }) => {
+export const HouseCard = ({ imgSource, title, description, price }) => {
+    const formattedPrice = new Intl.NumberFormat('en-US', {
+        style: 'currency',
+        currency: 'USD',
+    });
+
     return (
         <CardContainer>
             <CardImage source={{ uri: imgSource }}></CardImage>
             <TextContainer>
                 <TextContainerLeft>
-                    <CardTitle>Casa à venda</CardTitle>
+                    <CardTitle>{title}</CardTitle>
                     <CardDescription>
-                        Rua Casemiro de Abreu, 1908 - Casa E, Rio de Janeiro
+                        {description}
                     </CardDescription>
                 </TextContainerLeft>
                 <TextContainerRight>
-                    <CardHightLightText>U$ 200,00</CardHightLightText>
+                    <CardHightLightText>{formattedPrice.format(price)}</CardHightLightText>
                 </TextContainerRight>
             </TextContainer>
         </CardContainer>

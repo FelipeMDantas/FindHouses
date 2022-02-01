@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { ScreenContainer, TitleContainer, TopContainer, ScreenScroll } from './styles';
+import { ScreenContainer, TitleContainer, TopContainer, ContentContainer } from './styles';
 import { HousesList, IconButton, Input, Title } from '../../components';
 import { getHousesCall } from "../../services/calls";
 
@@ -17,17 +17,19 @@ export const HomeScreen = () => {
 
     return (
         <ScreenContainer>
-            <TopContainer>
-                <TitleContainer>
-                    <Title>Encontre aqui seu imóvel</Title>
-                </TitleContainer>
+            <HousesList data={housesListData}>
+                <ContentContainer>
+                    <TopContainer>
+                        <TitleContainer>
+                            <Title>Encontre aqui seu imóvel</Title>
+                        </TitleContainer>
 
-                <IconButton iconName="filter"></IconButton>
-            </TopContainer>
+                        <IconButton iconName="filter"></IconButton>
+                    </TopContainer>
 
-            <Input label="Localização" placeholder="Digite o endereço"></Input>
-
-            <HousesList data={housesListData} />
+                    <Input label="Localização" placeholder="Digite o endereço"></Input>
+                </ContentContainer>
+            </HousesList>
         </ScreenContainer>
     );
 };

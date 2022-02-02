@@ -1,14 +1,17 @@
 import React, { useEffect, useState } from "react";
 import { ScreenContainer, TitleContainer, TopContainer, ContentContainer } from './styles';
-import { HousesList, IconButton, Input, Title } from '../../components';
+import { HouseCard, HousesList, IconButton, Input, Title } from '../../components';
 import { getHousesCall } from "../../services/calls";
 
 export const HomeScreen = () => {
     const [housesListData, setHousesListData] = useState([]);
+    //const [loading, setLoading] = useState([]);
 
     const callGetHouses = async () => {
         const result = await getHousesCall();
+        console.log({ result });
         setHousesListData(result.properties ? result.properties : []);
+        //setLoading(false);
     };
 
     useEffect(() => {

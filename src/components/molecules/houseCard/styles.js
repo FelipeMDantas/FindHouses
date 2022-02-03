@@ -1,7 +1,7 @@
 import styled from 'styled-components/native';
 
 export const CardContainer = styled.TouchableOpacity`
-    width: ${({ theme }) => theme.metrics.px(86)}px;
+    width: ${({ theme }) => theme.metrics.wp(86)}px;
     height: ${({ theme }) => theme.metrics.px(240)}px;
     border-radius: ${({ theme }) => theme.metrics.px(24)}px;
     background-color: ${({ theme }) => theme.colors.backgroundLight};
@@ -24,7 +24,7 @@ export const TextContainer = styled.View`
     align-items: flex-start;
     justify-content: space-between;
     padding-vertical: ${({ theme }) => theme.metrics.px(12)}px;
-    padding-horizontal: ${({ theme }) => theme.metrics.px(12)}px;
+    padding-horizontal: ${({ theme }) => theme.metrics.px(14)}px;
     height: 30%;
 `;
 

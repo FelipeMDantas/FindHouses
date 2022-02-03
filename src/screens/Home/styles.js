@@ -17,9 +17,8 @@ export const ContentContainer = styled.View`
     flex-direction: column;
     align-items: flex-start;
     justify-content: flex-start;
-    background-color: ${({ theme }) => theme.colors.backgroundDark};
     width: ${({ theme }) => theme.metrics.wp(100)}px;
-    padding: ${({ theme }) => theme.metrics.wp(24)}px;
+    padding: ${({ theme }) => theme.metrics.px(24)}px;
 `;
 
 export const TopContainer = styled.View`
@@ -29,8 +28,21 @@ export const TopContainer = styled.View`
     justify-content: space-between;
     width: 100%;
     margin-bottom: ${({ theme }) => theme.metrics.px(24)}px;
+    margin-top: ${({ theme }) => theme.metrics.px(24)}px;
 `;
 
 export const TitleContainer = styled.View`
     width: 65%;
+`;
+
+export const LoaderContainer = styled.View`
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: ${({ theme }) => theme.metrics.px(48)}px;
+`;
+
+export const Loader = styled.ActivityIndicator`
+    margin-bottom: ${({ theme }) => theme.metrics.px(12)}px;
 `;

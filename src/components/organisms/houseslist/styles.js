@@ -5,5 +5,3 @@ export const HouseListContainer = styled.FlatList.attrs({
         alignItems: 'center',
     }
 })``;
-
-console.log('Flat')

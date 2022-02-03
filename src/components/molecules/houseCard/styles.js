@@ -24,7 +24,7 @@ export const TextContainer = styled.View`
     align-items: flex-start;
     justify-content: space-between;
     padding-vertical: ${({ theme }) => theme.metrics.px(12)}px;
-    padding-horizontal: ${({ theme }) => theme.metrics.px(14)}px;
+    padding-horizontal: ${({ theme }) => theme.metrics.px(18)}px;
     height: 30%;
 `;
 

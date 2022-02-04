@@ -8,3 +8,28 @@ export const ScreenContainer = styled.View`
     height: 100%;
     background-color: ${({ theme }) => theme.colors.backgroundDark};
 `;
+
+export const ImageBackground = styled.ImageBackground`
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: 40%;
+    align-items: flex-start;
+    justify-content: space-between;
+    padding-top: ${({ theme }) => theme.metrics.px(48)}px;
+    padding-horizontal: ${({ theme }) => theme.metrics.px(24)}px;
+`;
+
+export const BottomScreenContainer = styled.View`
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    padding: ${({ theme }) => theme.metrics.px(24)}px;
+    width: 100%;
+    height: ${({ theme }) => theme.metrics.hp(65)}px;
+    background-color: ${({ theme }) => theme.colors.backgroundDark};
+    border-top-right-radius: ${({ theme }) => theme.metrics.px(24)}px;
+    border-top-left-radius: ${({ theme }) => theme.metrics.px(24)}px;
+    position: absolute;
+    bottom: 0;
+`;

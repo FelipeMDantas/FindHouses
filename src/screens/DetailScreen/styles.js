@@ -34,3 +34,11 @@ export const BottomScreenContainer = styled.View`
     position: absolute;
     bottom: 0;
 `;
+
+export const FeaturesContainer = styled.View`
+    display: flex;
+    flex-direction: row;
+    align-items: baseline;
+    justify-content: space-between;
+    width: 100%;
+`;

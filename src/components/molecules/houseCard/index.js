@@ -10,10 +10,10 @@ import {
 } from './styles';
 
 export const HouseCard = ({ imgSource, title, description, price, item }) => {
-    const formattedPrice = new Intl.NumberFormat('en-US', {
+    /*const formattedPrice = new Intl.NumberFormat('en-US', {
         style: 'currency',
         currency: 'USD',
-    });
+    });*/
 
     const navigation = useNavigation();
     const onClickItemContainer = () => {
@@ -21,6 +21,7 @@ export const HouseCard = ({ imgSource, title, description, price, item }) => {
     };
 
     imgSource = imgSource.replace('s.jpg', 'od-w1024_h768.webp');
+    description = description.replace('undefined - ', '');
 
     return (
         <CardContainer onPress={() => onClickItemContainer()}>
@@ -32,7 +33,7 @@ export const HouseCard = ({ imgSource, title, description, price, item }) => {
                 </TextContainerLeft>
                 <TextContainerRight>
                     <CardHightLightText>
-                        {formattedPrice.format(price)}
+                        U$ {price}
                     </CardHightLightText>
                 </TextContainerRight>
             </TextContainer>

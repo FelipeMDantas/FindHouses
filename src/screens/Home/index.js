@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
-import { ScreenContainer, TitleContainer, TopContainer, ContentContainer, LoaderContainer, Loader } from './styles';
-import { DetailText, HousesList, IconButton, Input, Title } from '../../components';
+import { ScreenContainer, TitleContainer, TopContainer, ContentContainer} from './styles';
+import { DetailText, HousesList, IconButton, Input, Loader, Title } from '../../components';
 import { getHousesCall } from "../../services/calls";
 
 export const HomeScreen = () => {
@@ -31,12 +31,7 @@ export const HomeScreen = () => {
 
                     <Input label="Localização" placeholder="Digite o endereço" />
 
-                    {loading && (
-                        <LoaderContainer>
-                            <Loader size="large" color="white" />
-                            <DetailText>Carregando...</DetailText>
-                        </LoaderContainer>
-                    )}
+                    {loading && <Loader />}
                 
                 </ContentContainer>
             </HousesList>

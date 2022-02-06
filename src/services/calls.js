@@ -12,3 +12,16 @@ export const getHousesCall = async () => {
         return error;
     }
 };
+
+export const getHouseDetail = async property_id => {
+    try {
+        const result = await api.get(
+            `/properties/v2/detail?property_id=${property_id}`,
+    );
+        console.log({ result });
+        return result.data;
+    } catch (error) {
+        console.log({ error });
+        return error;
+    }
+};

@@ -22,6 +22,7 @@ export const ImageBackground = styled.ImageBackground`
 
 export const BottomScreenContainer = styled.View`
     display: flex;
+    flex-direction: column;
     align-items: flex-start;
     justify-content: flex-start;
     padding: ${({ theme }) => theme.metrics.px(24)}px;

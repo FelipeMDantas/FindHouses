@@ -1,4 +1,5 @@
 import { useNavigation } from '@react-navigation/native';
+import { useHousesStore } from '../../../services/stores';
 import React from 'react';
 import { CardTitle, CardHightLightText, CardDescription } from '../../atoms';
 import { 
@@ -16,8 +17,11 @@ export const HouseCard = ({ imgSource, title, description, price, item }) => {
     });*/
 
     const navigation = useNavigation();
+    const { setSelectedHouse } = useHousesStore();
+
     const onClickItemContainer = () => {
-        navigation.navigate('Detail', { selectedHouse: item });
+        setSelectedHouse(item);
+        navigation.navigate('Detail');
     };
 
     imgSource = imgSource.replace('s.jpg', 'od-w1024_h768.webp');

@@ -2,9 +2,10 @@ import React, { useEffect, useState } from "react";
 import { DetailSectionTitle, DetailSubTitle, DetailText, DetailTitle, HouseFeatureCard, IconButton, Loader } from "../../components";
 import { BottomScreenContainer, FeaturesContainer, ImageBackground, ScreenContainer } from "./styles";
 import { getHouseDetail } from '../../services/calls';
+import { useHousesStore } from '../../services/stores';
 
-export const DetailScreen = ({ route, navigation }) => {
-    const { selectedHouse } = route.params;
+export const DetailScreen = ({ navigation }) => {
+    const { selectedHouse } = useHousesStore();
     const hqImage = selectedHouse.photos[0].href.replace('s.jpg', 'od-w1024_h768.webp');;
     const [neighborhoodName, setneighborhoodName] = useState([]);
     const [loading, setLoading] = useState(true);
@@ -19,7 +20,6 @@ export const DetailScreen = ({ route, navigation }) => {
 
     const callGetHouseDetail = () => {
         const result = getHouseDetail(selectedHouse.property_id);
-        //console.log({ result });
         setHouseDetail(result.properties[0] ? result.properties[0] : null)
         setLoading(false);
     };

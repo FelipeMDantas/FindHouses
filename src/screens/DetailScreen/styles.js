@@ -1,4 +1,4 @@
-import styled from 'styled-components/native';
+import styled, { ThemeContext } from 'styled-components/native';
 
 export const ScreenContainer = styled.View`
     flex: 1;
@@ -20,11 +20,15 @@ export const ImageBackground = styled.ImageBackground`
     padding-horizontal: ${({ theme }) => theme.metrics.px(24)}px;
 `;
 
-export const BottomScreenContainer = styled.View`
+export const BottomScreenContainer = styled.ScrollView.attrs({
+    contentContainerStyle: {
+        alignItems: 'flex-start',
+        justifyContent: 'flex-start',
+        paddingBottom: 48,
+    },
+})`
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
-    justify-content: flex-start;
     padding: ${({ theme }) => theme.metrics.px(24)}px;
     width: 100%;
     height: ${({ theme }) => theme.metrics.hp(65)}px;
@@ -41,4 +45,5 @@ export const FeaturesContainer = styled.View`
     align-items: baseline;
     justify-content: space-between;
     width: 100%;
+    min-height: ${({ theme }) => theme.metrics.hp(12)}px;
 `;

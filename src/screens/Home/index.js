@@ -1,15 +1,23 @@
 import React, { useEffect, useState } from "react";
 import { ScreenContainer, TitleContainer, TopContainer, ContentContainer} from './styles';
-import { DetailText, HousesList, IconButton, Input, Loader, Title } from '../../components';
+import { HousesList, IconButton, Input, Loader, Title } from '../../components';
 import { getHousesCall } from "../../services/calls";
+import { useHousesStore } from "../../services/stores";
 
 export const HomeScreen = () => {
-    const [housesListData, setHousesListData] = useState([]);
+    //const [housesListData, setHousesListData] = useState([]);
     const [loading, setLoading] = useState(true);
+    const {housesList, setHouseList} = useHousesStore();
 
-    const callGetHouses = async () => {
+    /*const callGetHouses = async () => {
         const result = await getHousesCall();
         setHousesListData(result.properties ? result.properties : []);
+        setLoading(false);
+    };*/
+
+    const callGetHouses = () => {
+        const result = getHousesCall();
+        setHouseList(result.properties ? result.properties : []);
         setLoading(false);
     };
 
@@ -19,7 +27,7 @@ export const HomeScreen = () => {
 
     return (
         <ScreenContainer>
-            <HousesList data={housesListData} loading={loading}>
+            <HousesList data={housesList} loading={loading}>
                 <ContentContainer>
                     <TopContainer>
                         <TitleContainer>

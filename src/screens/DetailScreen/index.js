@@ -3,9 +3,11 @@ import { DetailSectionTitle, DetailSubTitle, DetailText, DetailTitle, HouseFeatu
 import { BottomScreenContainer, FeaturesContainer, ImageBackground, ScreenContainer } from "./styles";
 import { getHouseDetail } from '../../services/calls';
 import { useHousesStore } from '../../services/stores';
+import { getIfHouseIsFavorite, saveHouseAsFavorite } from "../../services/db";
 
 export const DetailScreen = ({ navigation }) => {
     const { selectedHouse } = useHousesStore();
+    const [favorite, setFavorite] = useState(false);
     const hqImage = selectedHouse.photos[0].href.replace('s.jpg', 'od-w1024_h768.webp');;
     const [neighborhoodName, setneighborhoodName] = useState([]);
     const [loading, setLoading] = useState(true);
@@ -24,8 +26,14 @@ export const DetailScreen = ({ navigation }) => {
         setLoading(false);
     };
 
+    const checkIfHouseIsFavorite = async() => {
+        const isFavorite = await getIfHouseIsFavorite(selectedHouse.property_id);
+        setFavorite(isFavorite)
+    };
+
     useEffect(() => {
         callGetHouseDetail();
+        checkIfHouseIsFavorite();
     }, []);
 
     const validateNeighborhoodName = () => {

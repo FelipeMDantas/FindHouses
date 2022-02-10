@@ -1,5 +1,7 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
+//AsyncStorage.clear();
+
 const FAVORITE_KEY = '@FindHouses:Favorites';
 
 export const saveData = async (key, value) => {
@@ -13,11 +15,7 @@ export const saveData = async (key, value) => {
 export const getData = async key => {
     try {
         const value = await AsyncStorage.getItem(key);
-        if (value !== null) {
-            return value;
-        } else {
-            return null;
-        }
+        return value != null ? JSON.parse(value) : null;
     } catch (e) {
         console.log({ error: e });
     }
@@ -26,8 +24,7 @@ export const getData = async key => {
 export const getIfHouseIsFavorite = async houseId => {
     const savedFavorites = await getData(FAVORITE_KEY);
     if (savedFavorites) {
-        const arrayFavorites = JSON.parse(arrayFavorites);
-        if (arrayFavorites.find(h => h === houseId)) {
+        if (savedFavorites.find(h => h === houseId)) {
             return true;
         } else {
             return false;
@@ -40,17 +37,17 @@ export const getIfHouseIsFavorite = async houseId => {
 export const saveHouseAsFavorite = async houseId => {
     const savedFavorites = await getData(FAVORITE_KEY);
     if (savedFavorites) {
-        const arrayFavorites = JSON.parse(arrayFavorites);
-        if (arrayFavorites.find(h => h === houseId)) {
+        if (savedFavorites.find(h => h === houseId)) {
             return {
                 error: 'Imóvel já é favorito',
             };
         }
-        arrayFavorites.push(houseId);
-        await saveData(FAVORITE_KEY, JSON.stringify(arrayFavorites));
+        savedFavorites.push(houseId);
+        await saveData(FAVORITE_KEY, JSON.stringify(savedFavorites));
     } else {
-        const arrayFavorites = JSON.parse([houseId]);
-        await saveData(FAVORITE_KEY, JSON.stringify(arrayFavorites));
+        const newArray = new Array(houseId);
+        const arrayFavorites = JSON.stringify(newArray);
+        await saveData(FAVORITE_KEY, arrayFavorites);
     }
     return;
 };

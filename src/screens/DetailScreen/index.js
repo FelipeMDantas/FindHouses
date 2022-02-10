@@ -4,6 +4,7 @@ import { BottomScreenContainer, FeaturesContainer, ImageBackground, ScreenContai
 import { getHouseDetail } from '../../services/calls';
 import { useHousesStore } from '../../services/stores';
 import { getIfHouseIsFavorite, saveHouseAsFavorite } from "../../services/db";
+import { Alert } from "react-native";
 
 export const DetailScreen = ({ navigation }) => {
     const { selectedHouse } = useHousesStore();
@@ -28,7 +29,14 @@ export const DetailScreen = ({ navigation }) => {
 
     const checkIfHouseIsFavorite = async() => {
         const isFavorite = await getIfHouseIsFavorite(selectedHouse.property_id);
+        console.log({ isFavorite });
         setFavorite(isFavorite)
+    };
+
+    const saveFavoriteHouse = async () => {
+        await saveHouseAsFavorite(selectedHouse.property_id);
+        Alert.alert('Imóvel salvo como favorito com sucesso!');
+        setFavorite(true);
     };
 
     useEffect(() => {
@@ -58,7 +66,12 @@ export const DetailScreen = ({ navigation }) => {
                     transparent
                     onPress={onClickArrowBack}
                 />
-                <IconButton iconName="star-outline" transparent />
+                <IconButton 
+                    onPress={saveFavoriteHouse} 
+                    iconName={favorite ? "star" : "star-outline"}
+                    transparent
+                    fill={favorite}
+                />
             </ImageBackground>
             {
                 loading ? (

@@ -3,7 +3,7 @@ import { DetailSectionTitle, DetailSubTitle, DetailText, DetailTitle, HouseFeatu
 import { BottomScreenContainer, FeaturesContainer, ImageBackground, ScreenContainer } from "./styles";
 import { getHouseDetail } from '../../services/calls';
 import { useHousesStore } from '../../services/stores';
-import { getIfHouseIsFavorite, saveHouseAsFavorite } from "../../services/db";
+import { getIfHouseIsFavorite, removeHouseAsFavorite, saveHouseAsFavorite } from "../../services/db";
 import { Alert } from "react-native";
 
 export const DetailScreen = ({ navigation }) => {
@@ -34,9 +34,16 @@ export const DetailScreen = ({ navigation }) => {
     };
 
     const saveFavoriteHouse = async () => {
-        await saveHouseAsFavorite(selectedHouse.property_id);
-        Alert.alert('Imóvel salvo como favorito com sucesso!');
-        setFavorite(true);
+        if (favorite) {
+            await removeHouseAsFavorite(selectedHouse.property_id);
+            Alert.alert('Imóvel removido como favorito com sucesso!');
+            setFavorite(false);
+        }
+        else {
+            await saveHouseAsFavorite(selectedHouse.property_id);
+            Alert.alert('Imóvel salvo como favorito com sucesso!');
+            setFavorite(true);
+        }
     };
 
     useEffect(() => {
@@ -100,7 +107,7 @@ export const DetailScreen = ({ navigation }) => {
                             <HouseFeatureCard
                                 iconLib="FontAwesome"
                                 iconName="bathtub" 
-                                featureText={`${houseDetail.community.baths_min} - ${houseDetail.community.baths_max} bed(s)`} 
+                                featureText={`${houseDetail.community.baths_min} - ${houseDetail.community.baths_max} bath(s)`} 
                             />
                         </FeaturesContainer>
 

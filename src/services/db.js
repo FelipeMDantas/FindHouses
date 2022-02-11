@@ -51,3 +51,15 @@ export const saveHouseAsFavorite = async houseId => {
     }
     return;
 };
+
+export const removeHouseAsFavorite = async houseId => {
+    const savedFavorites = await getData(FAVORITE_KEY);
+    if (savedFavorites) {
+        const newSavedFavorite = savedFavorites.filter(h => h !== houseId);
+        await saveData(FAVORITE_KEY, JSON.stringify(newSavedFavorite));
+    } else {
+        return {
+            error: 'Imóvel não é favorito',
+        };
+    }
+};

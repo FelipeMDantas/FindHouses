@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from "react";
-import { ScreenContainer, TitleContainer, TopContainer, ContentContainer} from './styles';
-import { HousesList, IconButton, Input, Loader, Title } from '../../components';
+import { ScreenContainer, TitleContainer, TopContainer, ContentContainer } from './styles';
+import { HousesList, IconButton, Input, Loader, Modal, Title } from '../../components';
 import { getHousesCall } from "../../services/calls";
 import { useHousesStore } from "../../services/stores";
 
 export const HomeScreen = () => {
     //const [housesListData, setHousesListData] = useState([]);
     const [loading, setLoading] = useState(true);
-    const {housesList, setHouseList} = useHousesStore();
+    const { housesList, setHouseList } = useHousesStore();
 
     /*const callGetHouses = async () => {
         const result = await getHousesCall();
@@ -27,7 +27,7 @@ export const HomeScreen = () => {
 
     return (
         <ScreenContainer>
-            <HousesList data={housesList} loading={loading}>
+            {/*<HousesList data={housesList} loading={loading}>
                 <ContentContainer>
                     <TopContainer>
                         <TitleContainer>
@@ -40,9 +40,10 @@ export const HomeScreen = () => {
                     <Input label="Localização" placeholder="Digite o endereço" />
 
                     {loading && <Loader />}
-                
+
                 </ContentContainer>
-            </HousesList>
+    </HousesList>*/}
+            <Modal visible title="Filtrar" />
         </ScreenContainer>
     );
 };

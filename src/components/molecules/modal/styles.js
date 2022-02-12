@@ -5,6 +5,12 @@ export const ModalContainer = styled.View`
     width: ${({ theme }) => theme.metrics.wp(100)}px;
     heigth: ${({ theme }) => theme.metrics.hp(100)}px;
     margin-top: ${({ theme }) => theme.metrics.px(30)}px;
+    background: transparent;
+    position: absolute;
+    top : 0;
+    left : 0;
+    right : 0;
+    bottom : 0;
 `;
 
 export const ModalBackground = styled.View`
@@ -27,10 +33,12 @@ export const BottomScreenContainer = styled.ScrollView.attrs({
     flex-direction: column;
     padding: ${({ theme }) => theme.metrics.px(24)}px;
     width: 100%;
-    height: ${({ theme }) => theme.metrics.hp(74)}px;
+    height: ${({ theme }) => theme.metrics.hp(86)}px;
     background-color: ${({ theme }) => theme.colors.backgroundDark};
     border-top-right-radius: ${({ theme }) => theme.metrics.px(24)}px;
     border-top-left-radius: ${({ theme }) => theme.metrics.px(24)}px;
+    position: absolute;
+    bottom: 0;
 `;
 
 export const HeaderContainer = styled.View`

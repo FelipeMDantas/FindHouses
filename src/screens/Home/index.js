@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { ScreenContainer, TitleContainer, TopContainer, ContentContainer } from './styles';
-import { HousesList, IconButton, Input, Loader, Modal, Title } from '../../components';
+import { HousesList, IconButton, Input, Loader, FilterModal, Title } from '../../components';
 import { getHousesCall } from "../../services/calls";
 import { useHousesStore } from "../../services/stores";
 
@@ -8,6 +8,7 @@ export const HomeScreen = () => {
     //const [housesListData, setHousesListData] = useState([]);
     const [loading, setLoading] = useState(true);
     const { housesList, setHouseList } = useHousesStore();
+    const [filterModalVisible, setFilterModalVisible] = useState(false);
 
     /*const callGetHouses = async () => {
         const result = await getHousesCall();
@@ -25,16 +26,24 @@ export const HomeScreen = () => {
         callGetHouses();
     }, []);
 
+    const openFilterModal = () => {
+        setFilterModalVisible(true);
+    };
+
+    const closeFilterModal = () => {
+        setFilterModalVisible(false);
+    };
+
     return (
         <ScreenContainer>
-            {/*<HousesList data={housesList} loading={loading}>
+            <HousesList data={housesList} loading={loading}>
                 <ContentContainer>
                     <TopContainer>
                         <TitleContainer>
                             <Title>Encontre aqui seu imóvel</Title>
                         </TitleContainer>
 
-                        <IconButton iconName="filter" />
+                        <IconButton iconName="filter" onPress={openFilterModal}/>
                     </TopContainer>
 
                     <Input label="Localização" placeholder="Digite o endereço" />
@@ -42,8 +51,12 @@ export const HomeScreen = () => {
                     {loading && <Loader />}
 
                 </ContentContainer>
-    </HousesList>*/}
-            <Modal visible title="Filtrar" />
+            </HousesList>
+
+            {filterModalVisible && (
+                <FilterModal visible={filterModalVisible} onClose={closeFilterModal} />
+            )}
+            
         </ScreenContainer>
     );
 };

@@ -2,7 +2,7 @@ import React from 'react';
 import { BottomScreenContainer, HeaderContainer, ModalBackground, ModalContainer } from './styles';
 import { Title, IconButton } from '../../atoms';
 
-export const Modal = ({ visible, onClose, title }) => {
+export const Modal = ({ visible, onClose, title, children }) => {
     return (
         <ModalContainer 
             transparent
@@ -15,6 +15,8 @@ export const Modal = ({ visible, onClose, title }) => {
                         <Title>{title}</Title>
                         <IconButton iconName="close" onPress={onClose} />
                     </HeaderContainer>
+
+                    {children}
                 </BottomScreenContainer>
             </ModalBackground>
         </ModalContainer>

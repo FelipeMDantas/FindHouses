@@ -1,9 +1,26 @@
 import React from "react";
-import { InputSectionLabel } from "../../atoms";
+import { useState } from "react";
+import { Button, InputSectionLabel } from "../../atoms";
 import { Input, Modal } from "../../molecules";
 import { FilterContainer, InputRowItem, InputsRowContainer } from './styles';
+import { useHousesHooks } from '../../../services/hooks';
 
 export const FilterModal = ({ onClose, visible }) => {
+    const { onFilterHousesList } = useHousesHooks();
+    const [sizeMin, setSizeMin] = useState();
+    const [sizeMax, setSizeMax] = useState();
+    const [priceMin, setPriceMin] = useState();
+    const [priceMax, setPriceMax] = useState();
+    const [bedsMin, setBedsMin] = useState();
+    const [bathsMin, setBathsMin] = useState();
+
+    const onClickApply = () => {
+        onFilterHousesList({
+
+        })
+        onClose();
+    }
+
     return (
         <Modal visible={visible} onClose={onClose} title="Filtrar">
             <FilterContainer>
@@ -12,10 +29,22 @@ export const FilterModal = ({ onClose, visible }) => {
                 </InputSectionLabel>
                 <InputsRowContainer>
                     <InputRowItem>
-                        <Input label="Mínimo" placeholder="Ex: 77" />
+                        <Input
+                            value={sizeMin}
+                            onChangeText={t => setSizeMin(t)}
+                            keyboardType="numeric"
+                            label="Mínimo"
+                            placeholder="Ex: 77"
+                        />
                     </InputRowItem>
                     <InputRowItem>
-                        <Input label="Máximo" placeholder="Ex: 200" />
+                        <Input
+                            value={sizeMax}
+                            onChangeText={t => setSizeMax(t)}
+                            keyboardType="numeric"
+                            label="Máximo"
+                            placeholder="Ex: 200"
+                        />
                     </InputRowItem>
                 </InputsRowContainer>
 
@@ -24,10 +53,22 @@ export const FilterModal = ({ onClose, visible }) => {
                 </InputSectionLabel>
                 <InputsRowContainer>
                     <InputRowItem>
-                        <Input label="Mínimo" placeholder="Ex: 500" />
+                        <Input
+                            value={priceMin}
+                            onChangeText={t => setPriceMin(t)}
+                            keyboardType="numeric"
+                            label="Mínimo"
+                            placeholder="Ex: 500"
+                        />
                     </InputRowItem>
                     <InputRowItem>
-                        <Input label="Máximo" placeholder="Ex: 2000" />
+                        <Input
+                            value={priceMax}
+                            onChangeText={t => setPriceMax(t)}
+                            keyboardType="numeric"
+                            label="Máximo"
+                            placeholder="Ex: 2000"
+                        />
                     </InputRowItem>
                 </InputsRowContainer>
 
@@ -36,7 +77,13 @@ export const FilterModal = ({ onClose, visible }) => {
                 </InputSectionLabel>
                 <InputsRowContainer>
                     <InputRowItem>
-                        <Input label="Mínimo" placeholder="Ex: 2" />
+                        <Input
+                            value={bedsMin}
+                            onChangeText={t => setBedsMin(t)}
+                            keyboardType="numeric"
+                            label="Mínimo"
+                            placeholder="Ex: 2"
+                        />
                     </InputRowItem>
                 </InputsRowContainer>
 
@@ -45,10 +92,18 @@ export const FilterModal = ({ onClose, visible }) => {
                 </InputSectionLabel>
                 <InputsRowContainer>
                     <InputRowItem>
-                        <Input label="Mínimo" placeholder="Ex: 1" />
+                        <Input
+                            value={bathsMin}
+                            onChangeText={t => setBathsMin(t)}
+                            keyboardType="numeric"
+                            label="Mínimo"
+                            placeholder="Ex: 1"
+                        />
                     </InputRowItem>
                 </InputsRowContainer>
             </FilterContainer>
+
+            <Button onPress={onClickApply} mt={24}>Aplicar</Button>
         </Modal>
     );
 };

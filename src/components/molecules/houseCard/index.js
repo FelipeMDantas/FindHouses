@@ -11,11 +11,6 @@ import {
 } from './styles';
 
 export const HouseCard = ({ imgSource, title, description, price, item }) => {
-    /*const formattedPrice = new Intl.NumberFormat('en-US', {
-        style: 'currency',
-        currency: 'USD',
-    });*/
-
     const navigation = useNavigation();
     const { setSelectedHouse } = useHousesStore();
 
@@ -24,7 +19,7 @@ export const HouseCard = ({ imgSource, title, description, price, item }) => {
         navigation.navigate('Detail');
     };
 
-    imgSource = imgSource.replace('s.jpg', 'od-w1024_h768.webp');
+    imgSource = imgSource ? imgSource.replace('s.jpg', 'od-w1024_h768.webp') : 0;
     description = description.replace('undefined - ', '');
 
     return (

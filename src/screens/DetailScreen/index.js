@@ -9,20 +9,14 @@ import { Alert } from "react-native";
 export const DetailScreen = ({ navigation }) => {
     const { selectedHouse } = useHousesStore();
     const [favorite, setFavorite] = useState(false);
-    const hqImage = selectedHouse.photos[0].href.replace('s.jpg', 'od-w1024_h768.webp');;
+    const hqImage = selectedHouse.photos[0] ? selectedHouse.photos[0].href.replace('s.jpg', 'od-w1024_h768.webp') : 0;
     const [neighborhoodName, setneighborhoodName] = useState([]);
     const [loading, setLoading] = useState(true);
     const [houseDetail, setHouseDetail] = useState();
 
-    /*const callGetHouseDetail = async () => {
+    const callGetHouseDetail = async () => {
         const result = await getHouseDetail(selectedHouse.property_id);
-        //console.log({ result });
-        setHouseDetail(result.properties[0] ? result.properties[0] : null)
-        setLoading(false);
-    };*/
-
-    const callGetHouseDetail = () => {
-        const result = getHouseDetail(selectedHouse.property_id);
+        console.log({ result });
         setHouseDetail(result.properties[0] ? result.properties[0] : null)
         setLoading(false);
     };
@@ -88,7 +82,7 @@ export const DetailScreen = ({ navigation }) => {
                 ) : (
                     <BottomScreenContainer>
                         <DetailTitle>{houseDetail.address.line}</DetailTitle>
-                        <DetailSubTitle>U$ {houseDetail.community.price_max}</DetailSubTitle>
+                        <DetailSubTitle>U$ {houseDetail.community ? houseDetail.community.price_max : 0}</DetailSubTitle>
                         <DetailText>{`${neighborhoodName}${houseDetail.address.state}`}</DetailText>
 
                         <DetailSectionTitle mt={24} mb={12}>Detalhes</DetailSectionTitle>
@@ -102,19 +96,20 @@ export const DetailScreen = ({ navigation }) => {
                             <HouseFeatureCard 
                                 iconLib="Ionicons"
                                 iconName="bed-outline" 
-                                featureText={`${houseDetail.community.beds_min} - ${houseDetail.community.beds_min} bed(s)`} 
+                                featureText={
+                                    `${houseDetail.community ? houseDetail.community.beds_min : 0} - ${houseDetail.community ? houseDetail.community.beds_min : 0} bed(s)`
+                                }
                             />
                             <HouseFeatureCard
                                 iconLib="FontAwesome"
                                 iconName="bathtub" 
-                                featureText={`${houseDetail.community.baths_min} - ${houseDetail.community.baths_max} bath(s)`} 
+                                featureText={
+                                    `${houseDetail.community ? houseDetail.community.baths_min : 0} - ${houseDetail.community ? houseDetail.community.baths_max : 0} bath(s)`
+                                } 
                             />
                         </FeaturesContainer>
 
                         <DetailSectionTitle mt={24} mb={12}>Vantagens do Imóvel</DetailSectionTitle>
-                        {houseDetail.features[1].text.map(item => (
-                            <DetailText mb={2} key={item}>- {item}</DetailText>
-                        ))}
                         {houseDetail.features[1].text.map(item => (
                             <DetailText mb={2} key={item}>- {item}</DetailText>
                         ))}

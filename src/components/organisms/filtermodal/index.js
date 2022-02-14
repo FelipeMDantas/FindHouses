@@ -15,9 +15,14 @@ export const FilterModal = ({ onClose, visible }) => {
     const [bathsMin, setBathsMin] = useState();
 
     const onClickApply = () => {
-        onFilterHousesList({
-
-        })
+        onFilterHousesList ({
+            sizeMin, 
+            sizeMax,
+            priceMin,
+            priceMax,
+            bedsMin,
+            bathsMin,
+        });
         onClose();
     }
 

@@ -1,7 +1,5 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
-//AsyncStorage.clear();
-
 const FAVORITE_KEY = '@FindHouses:Favorites';
 
 export const saveData = async (key, value) => {

@@ -12,4 +12,8 @@ export const useHousesStore = create(set => ({
 
   selectedHouse: null,
   setSelectedHouse: selectedHouse => set ({ selectedHouse }),
+
+  query: null,
+  setQuery: query => set({ query }),
+  
 }));

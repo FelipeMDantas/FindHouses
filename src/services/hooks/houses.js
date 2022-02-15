@@ -7,11 +7,16 @@ export const useHousesHooks = () => {
         setLoadingHousesList,
         housesList,
         offset,
-        setOffSet
+        setOffSet,
+        query,
+        setQuery,
     } = useHousesStore();
 
     const onGetHouses = async () => {
-        const result = await getHousesCall();
+        const result = await getHousesCall({
+            ...query,
+            offset,
+        });
         if (offset > 0) {
             setHouseList(
                 result.properties ? [...housesList, ...result.properties] : housesList,
@@ -24,9 +29,19 @@ export const useHousesHooks = () => {
         setOffSet(offset + 15);
     };
 
-    const onFilterHousesList = async query => {
+    const onFilterHousesList = async receivedQuery => {
         setLoadingHousesList(true);
-        const result = await getHousesCall(query);
+
+        if (receivedQuery !== query) {
+            setHouseList([]);
+            setOffSet(0);
+        }
+        
+        setQuery(receivedQuery);
+        const result = await getHousesCall({
+            query: receivedQuery,
+            offset,
+        });
         setHouseList(result.properties ? result.properties : []);
         setLoadingHousesList(false);
     }

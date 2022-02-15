@@ -23,7 +23,7 @@ export const HomeScreen = () => {
 
     return (
         <ScreenContainer>
-            <HousesList data={housesList} loading={loadingHousesList}>
+            <HousesList data={housesList} loading={loadingHousesList} onEndReached={onGetHouses}>
                 <ContentContainer>
                     <TopContainer>
                         <TitleContainer>

@@ -2,12 +2,11 @@ import React from 'react';
 import { HouseCard } from '../../molecules';
 import { HouseListContainer } from './styles';
 
-export const HousesList = ({ data, children, loading }) => {
-    console.log({data});
-
+export const HousesList = ({ data, children, loading, onEndReached }) => {
         return (
             <HouseListContainer
                 data={data}
+                onEndReached={onEndReached}
                 refreshing={loading}
                 renderItem={({ item }) => (
                     <HouseCard

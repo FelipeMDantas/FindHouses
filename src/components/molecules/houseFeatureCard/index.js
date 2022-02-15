@@ -6,11 +6,6 @@ import IconAwesome from 'react-native-vector-icons/FontAwesome';
 import { DetailText } from "../../atoms";
 
 export const HouseFeatureCard = ({ iconName, featureText, iconLib }) => {
-
-    //featureText == '1 beds' ? featureText = '1 bed' : featureText;
-
-    //console.log({featureText});
-
     return (
         <FeatureCardContainer>
             {
@@ -26,9 +21,3 @@ export const HouseFeatureCard = ({ iconName, featureText, iconLib }) => {
         </FeatureCardContainer>
     );
 };
-
-/*            {iconName != 'floor-plan' ?
-                <Icon name={iconName} color="white" size={35} /> :
-                <IconCommunity name={iconName} color="white" size={35} />
-            }
-*/

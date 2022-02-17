@@ -9,9 +9,11 @@
 >FindHouses is an app that consumes an API via the RapidAPI platform and renders plenty of data related to the searched estates so as to suitably inform the user
 
 Home Screen
+<p>
 <img src = "images/home_screen.png">
 
 Filter Screen
+<p>
 <img src = "images/filter_screen.png">
 
 ## Features

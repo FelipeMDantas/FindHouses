@@ -16,12 +16,17 @@ Filter Screen
 <p>
 <img src = "images/filter_screen.png">
 
+Detailed Screen
+<p>
+<img src = "images/detailed_screen.png">
+
 ## Features
 
 - Splash Screen
 - Home screen with superficial information about several real estates
 - Individualized screens containing detailed information about the selected real estate
 - Filter screen that allows one to narrow the results according to one's preferences 
+- Favorite mark
 
 ## Tech
 
